@@ -8,4 +8,26 @@ public class App {
 
         Expense expense = new Expense(10, "caca", 12);
     }
+    
+    public static void add(Expense expense){
+
+    }
+    public static void list(){
+
+    }
+    public static void summary(){
+
+    }
+    public static void delete(){
+        
+    }
+
+
+
+
+
+
+
+
+
 }
