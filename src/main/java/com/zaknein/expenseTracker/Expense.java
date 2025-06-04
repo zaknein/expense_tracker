@@ -1,24 +1,24 @@
 package com.zaknein.expenseTracker;
 
-
-//public class Task {
-//
-//    int id;
-//    date date;
-//    String description;
-//    Double amount;
-//
-//    public Task() {
-//
-//    }
-//
-//    public Task(Int id, Date date, String description, Double amount) {
-//        this.id = id;
-//        this.date = date;
-//        this.description = description;
-//        this.amount = amount;
-//    }
-//}
-
 public record Expense(int id, String description, double amount) {
+}
+
+public class Parametros{
+    @Parameter(
+        names = "--description",
+        description = "To add description of the purchase",
+        requiered = true
+    )
+    private String description;
+
+
+    @Parameter(
+        names = "--amount",
+        description = "To enter the amount of money spend",
+        requiered = true
+    )
+    private Double amount;
+
+    
+
 }
