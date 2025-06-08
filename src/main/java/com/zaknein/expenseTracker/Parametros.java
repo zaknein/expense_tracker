@@ -1,4 +1,4 @@
-
+package com.zaknein.expenseTracker;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
 
