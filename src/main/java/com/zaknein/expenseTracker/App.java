@@ -20,6 +20,15 @@ public class App {
 
 
         Expense expense = new Expense(10, "caca", 12);
+        
+        String result = args[0];
+
+        Switch (result){
+            case "add":
+                
+        }
+
+
     }
 
     public static void add(Expense expense) throws IOException {
