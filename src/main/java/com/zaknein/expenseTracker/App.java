@@ -5,6 +5,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.beust.jcommander.JCommander;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
@@ -18,14 +19,28 @@ public class App {
 
     public static void main(String[] args) throws IOException {
 
+        Parametros parametros = new Parametros();
 
-        Expense expense = new Expense(10, "caca", 12);
+        JCommander jc = JCommander.newBuilder()
+                .addCommand("parametros", parametros )
+                .build();
+        
         
         String result = args[0];
 
-        Switch (result){
+        switch (result){
             case "add":
-                
+                Expense expense = new Expense(10, "caca", 12);
+
+                add(expense);
+                break;
+
+            case "delete":
+                int id = 1 ;
+
+                delete(id);
+                break;
+
         }
 
 
@@ -57,7 +72,7 @@ public class App {
 
     }
 
-    public static void delete() {
+    public static void delete(int id) {
 
     }
 
