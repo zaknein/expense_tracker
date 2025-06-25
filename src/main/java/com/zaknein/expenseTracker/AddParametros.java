@@ -4,7 +4,7 @@ import com.beust.jcommander.Parameters;
 
 
 @Parameters(separators = "=")
-public class Parametros{
+public class AddParametros{
     @Parameter(
         names = "--description",
         description = "To add description of the purchase",
@@ -20,6 +20,7 @@ public class Parametros{
     )
     private Double amount;
 
-    
+    public String getDescription() { return description; }
+    public double getAmount() { return amount; }
 
 }

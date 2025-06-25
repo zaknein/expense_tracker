@@ -19,42 +19,40 @@ public class App {
 
     public static void main(String[] args) throws IOException {
 
-        Parametros parametros = new Parametros();
+        AddParametros addParametros = new AddParametros();
 
         JCommander jc = JCommander.newBuilder()
-                .addCommand("parametros", parametros )
+                .addCommand("add", addParametros )
                 .build();
-        
-        
-        String result = args[0];
 
-        switch (result){
-            case "add":
-                Expense expense = new Expense(10, "caca", 12);
-
-                add(expense);
-                break;
-
-            case "delete":
-                int id = 1 ;
-
-                delete(id);
-                break;
-
+        if(args.length == 0){
+            jc.usage();
+            return;
         }
+        
+        jc.parse(args);
 
+        String parsedCommand = jc.getParsedCommand();
+
+        switch (parsedCommand){
+            case "add" -> add(addParametros);
+        }
 
     }
 
-    public static void add(Expense expense) throws IOException {
+    public static void add(AddParametros parametros) throws IOException {
 
         var list = new ArrayList<Expense>();
 
         if (expenseFile.exists()) {
             list = mapper.readValue(expenseFile, mapper.getTypeFactory().constructCollectionType(ArrayList.class, Expense.class));
-            list.add(expense);
+            // list.add();
         }
 
+        int newId = list.size() + 1;
+
+        Expense newExpense = new Expense(newId, parametros.getDescription(), parametros.getAmount());
+        list.add(newExpense);
         try {
             mapper.writeValue(expenseFile, list);
         } catch (IOException e) {
