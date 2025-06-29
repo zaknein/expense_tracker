@@ -7,6 +7,10 @@ import java.util.List;
 
 import com.beust.jcommander.JCommander;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.zaknein.expenseTracker.comandos.AddExpense;
+import com.zaknein.expenseTracker.comandos.ListExpenses;
+import com.zaknein.expenseTracker.dominio.Expense;
+import com.zaknein.expenseTracker.logica.SaveNewExpense;
 
 
 public class App {
@@ -15,32 +19,39 @@ public class App {
 
     private static final ObjectMapper mapper = new ObjectMapper();
 
-    
-
     public static void main(String[] args) throws IOException {
 
-        AddParametros addParametros = new AddParametros();
+        // Instnciamos comndos
+        AddExpense addExpense = new AddExpense();
+        ListExpenses listExpenses = new ListExpenses();
+
+        // Instanciamos objetos de logica
+        SaveNewExpense saveNewExpense = new SaveNewExpense();
+
 
         JCommander jc = JCommander.newBuilder()
-                .addCommand("add", addParametros )
+                .addCommand("add", addExpense)
+                .addCommand("list", listExpenses)
                 .build();
 
-        if(args.length == 0){
+        if (args.length == 0) {
             jc.usage();
             return;
         }
-        
+
         jc.parse(args);
 
         String parsedCommand = jc.getParsedCommand();
 
-        switch (parsedCommand){
-            case "add" -> add(addParametros);
+        switch (parsedCommand) {
+            //case "add" -> add(addExpense);
+            case "add" -> saveNewExpense.save( addExpense.getDescription(), addExpense.getAmount());
+
         }
 
     }
 
-    public static void add(AddParametros parametros) throws IOException {
+    public static void add(AddExpense parametros) throws IOException {
 
         var list = new ArrayList<Expense>();
 
