@@ -1,9 +1,21 @@
 package com.zaknein.expenseTracker.logica;
 
+import com.zaknein.expenseTracker.almacenamiento.ExpenseStorage;
+import com.zaknein.expenseTracker.dominio.Expense;
+
 public class SaveNewExpense {
 
-    public void save(String description, Double amount) {
+    private final ExpenseStorage expenseStorage;
 
+    public SaveNewExpense(ExpenseStorage expenseStorage) {
+        this.expenseStorage = expenseStorage;
+    }
+
+
+    public void save(String description, Double amount) {
+        int id = expenseStorage.list().size() + 1;
+        Expense expense = new Expense(id, description, amount);
+        expenseStorage.add(expense);
     }
 
 }
