@@ -43,9 +43,11 @@ public class ExpenseStorage {
     public void save() {
 
         try {
+           // expenseFile.createNewFile();
             mapper.writeValue(expenseFile, expenses);
         } catch (IOException e) {
             System.out.println("No existe archivo");
+            e.printStackTrace();
         }
 
     }

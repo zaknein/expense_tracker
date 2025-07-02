@@ -3,11 +3,11 @@ package com.zaknein.expenseTracker.logica;
 import com.zaknein.expenseTracker.almacenamiento.ExpenseStorage;
 import com.zaknein.expenseTracker.dominio.Expense;
 
-public class SaveNewExpense {
+public class SaveExpenseLogic {
 
     private final ExpenseStorage expenseStorage;
 
-    public SaveNewExpense(ExpenseStorage expenseStorage) {
+    public SaveExpenseLogic(ExpenseStorage expenseStorage) {
         this.expenseStorage = expenseStorage;
     }
 
