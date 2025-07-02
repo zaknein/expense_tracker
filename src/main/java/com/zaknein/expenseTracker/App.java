@@ -47,7 +47,9 @@ public class App {
 
         switch (parsedCommand) {
 
-            case "add" -> saveNewExpense.save( addExpense.getDescription(), addExpense.getAmount());
+            case "add" -> SaveNewExpense.save( addExpense.getDescription(), addExpense.getAmount());
+           // case "list" -> listExpenses
+            case "delete" -> DeleteExpense.remove(id);
 
         }
 
