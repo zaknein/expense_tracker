@@ -13,8 +13,8 @@ public class UpdateExpenseLogic {
 
 
     public void update(Int id, String description, Double amount) {
-        Expense expense = new Expense(id, description, amount);
-        expenseStorage.update(expense);
+        Expense expense = new Expense( description, amount);
+        expenseStorage.update(id, expense);
     }
 
 }

@@ -40,8 +40,8 @@ public class ExpenseStorage {
         save();
     }
 
-    public void update(Expense expense){
-        expenses.add(expense);
+    public void update(int id,Expense expense){
+        expenses.set(id, expense);
         save();
     }
 
