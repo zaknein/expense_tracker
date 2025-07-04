@@ -7,6 +7,7 @@ import com.zaknein.expenseTracker.almacenamiento.ExpenseStorage;
 import com.zaknein.expenseTracker.comandos.AddExpense;
 import com.zaknein.expenseTracker.comandos.DeleteExpense;
 import com.zaknein.expenseTracker.comandos.ListExpenses;
+import com.zaknein.expenseTracker.comandos.UpdateExpense;
 import com.zaknein.expenseTracker.logica.DeleteExpenseLogic;
 import com.zaknein.expenseTracker.logica.ListExpenseLogic;
 import com.zaknein.expenseTracker.logica.SaveExpenseLogic;
@@ -54,7 +55,7 @@ public class App {
             case "add" -> saveNewExpense.save( addExpense.getDescription(), addExpense.getAmount());
             case "list" -> listExpenseLogic.show();
             case "delete" -> deleteExpenseLogic.remove(deleteExpense.getId());
-            case "update" -> updateExpenseLogic.update(updateExpense.getId, updateExpense.getDescription, updateExpense.getAmount());
+            case "update" -> updateExpenseLogic.update(updateExpense.getId(), updateExpense.getDescription(), updateExpense.getAmount());
 
         }
 

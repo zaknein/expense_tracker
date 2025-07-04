@@ -3,6 +3,8 @@ package com.zaknein.expenseTracker.logica;
 import com.zaknein.expenseTracker.almacenamiento.ExpenseStorage;
 import com.zaknein.expenseTracker.dominio.Expense;
 
+import java.util.List;
+
 public class UpdateExpenseLogic {
 
     private final ExpenseStorage expenseStorage;
@@ -12,9 +14,19 @@ public class UpdateExpenseLogic {
     }
 
 
-    public void update(Int id, String description, Double amount) {
-        Expense expense = new Expense( description, amount);
-        expenseStorage.update(id, expense);
+    public void update(int id, String description, Double amount) {
+        Expense updatedexpense = new Expense(id, description, amount);
+
+        List<Expense> expense = expenseStorage.list();
+
+        for(int i=0; i < expense.size(); i++){
+            if(expense.get(i).getId() == id){
+                expenseStorage.update(i, updatedexpense);
+            }
+        }
+
+
+        //expenseStorage.update(id, expense);
     }
 
 }

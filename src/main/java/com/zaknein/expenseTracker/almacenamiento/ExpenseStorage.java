@@ -36,11 +36,11 @@ public class ExpenseStorage {
 
 
     public void delete(int id) {
-        expenses.removeIf((expense) -> expense.id() == id);
+        expenses.removeIf((expense) -> expense.getId() == id);
         save();
     }
 
-    public void update(int id,Expense expense){
+    public void update(int id, Expense expense){
         expenses.set(id, expense);
         save();
     }
@@ -50,6 +50,7 @@ public class ExpenseStorage {
         try {
            // expenseFile.createNewFile();
             mapper.writeValue(expenseFile, expenses);
+
         } catch (IOException e) {
             System.out.println("No existe archivo");
             e.printStackTrace();

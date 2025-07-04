@@ -6,54 +6,54 @@ import com.beust.jcommander.Parameters;
 @Parameters(
         commandNames = "update",
         commandDescription = "Update a expense"
-) 
+)
 
-public class UpdateExpense{
+public class UpdateExpense {
 
-        @Parameter(
+    @Parameter(
             names = "--id",
             description = "Id of the expense",
             required = true
-        )
+    )
 
-        private int id;
+    private int id;
 
-       @Parameter(
-        names = "--description",
-        description = "Description of th expense",
-        required = true
+    @Parameter(
+            names = "--description",
+            description = "Description of th expense",
+            required = true
     )
     private String description;
 
     @Parameter(
-        names = "--amount",
-        description = "The amount of money spend",
-        required = true
+            names = "--amount",
+            description = "The amount of money spend",
+            required = true
     )
     private double amount;
 
-        public int getId() {
+    public int getId() {
         return id;
     }
 
-    
+
     public void setId(int id) {
         this.id = id;
     }
 
-        public String getDescription() {
+    public String getDescription() {
         return description;
     }
-    
-        public void setDescription(String description) {
+
+    public void setDescription(String description) {
         this.description = description;
     }
 
-        public double getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    
+
     public void setAmount(double amount) {
         this.amount = amount;
     }

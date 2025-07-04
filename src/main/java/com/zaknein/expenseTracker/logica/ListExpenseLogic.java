@@ -15,7 +15,9 @@ public class ListExpenseLogic {
     public void show() {
         List<Expense> lista = expenseStorage.list();
         for (Expense expense :lista) {
-            System.out.println("description " + expense.description());
+            System.out.println("Id: " + expense.getId());
+            System.out.println("Description " + expense.getDescription());
+            System.out.println("Amount " + expense.getAmount());
         }
 
     }
