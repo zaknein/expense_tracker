@@ -18,19 +18,19 @@ public class ExpenseStorage {
 
     // private final List<Expense> expenses;
 
-    HashMap<Integer,expense> expenses = new HashMap<>();
+    private HashMap<Integer,Expense> expenses = new HashMap<>();
 
     public ExpenseStorage() throws IOException {
         if (expenseFile.exists()) {
-            expenses = mapper.readValue(expenseFile, mapper.getTypeFactory().constructCollectionType(ArrayList.class, Expense.class));
+            expenses = mapper.readValue(expenseFile, mapper.getTypeFactory().constructMapLikeType(HashMap.class, Integer.class, Expense.class));
         } else {
-            expenses = new ArrayList<>();
+            expenses = new HashMap<>();
         }
     }
 
     public void add(Expense expense) {
         // expenses.add(expense);
-        expenses.put<expense.getId(), expense>;
+        expenses.put(expense.getId(), expense);
         save();
     }
 
@@ -48,7 +48,7 @@ public class ExpenseStorage {
 
     public void update(int id, Expense expense){
         // expenses.set(id, expense);
-        expenses.replace(expense.getId(), expense)
+        expenses.replace(expense.getId(), expense);
         save();
     }
 
