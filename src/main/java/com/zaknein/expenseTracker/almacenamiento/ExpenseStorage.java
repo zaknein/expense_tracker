@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.HashMap;
+
 
 public class ExpenseStorage {
     private static final File expenseFile = new File("expense.json");
@@ -16,9 +18,7 @@ public class ExpenseStorage {
 
     // private final List<Expense> expenses;
 
-    private final map<Expense> expenses;
-
-    HashMap<Integer,expenses> theexpense = new HashMap<>();
+    HashMap<Integer,expense> expenses = new HashMap<>();
 
     public ExpenseStorage() throws IOException {
         if (expenseFile.exists()) {
@@ -30,7 +30,7 @@ public class ExpenseStorage {
 
     public void add(Expense expense) {
         // expenses.add(expense);
-        theexpense.put<expenses.getId(), expense>;
+        expenses.put<expense.getId(), expense>;
         save();
     }
 
@@ -42,13 +42,13 @@ public class ExpenseStorage {
 
     public void delete(int id) {
         // expenses.removeIf((expense) -> expense.getId() == id);
-        expense.remove(id);
+        expenses.remove(id);
         save();
     }
 
     public void update(int id, Expense expense){
         // expenses.set(id, expense);
-        theexpense.replace(expenses.getId(), expense)
+        expenses.replace(expense.getId(), expense)
         save();
     }
 
