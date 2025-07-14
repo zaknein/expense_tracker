@@ -37,8 +37,9 @@ public class ExpenseStorage {
 
     public List<Expense> list() {
 
-        
-        return new ArrayList(expenses.value());
+
+
+        return new ArrayList(expenses.values());
     }
 
 

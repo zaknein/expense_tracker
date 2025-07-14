@@ -3,6 +3,7 @@ package com.zaknein.expenseTracker.logica;
 import com.zaknein.expenseTracker.almacenamiento.ExpenseStorage;
 import com.zaknein.expenseTracker.dominio.Expense;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class UpdateExpenseLogic {
@@ -14,8 +15,8 @@ public class UpdateExpenseLogic {
     }
 
 
-    public void update(int id, String description, Double amount) {
-        Expense updatedexpense = new Expense(id, description, amount);
+    public void update(int id, String description, Double amount, LocalDateTime date) {
+        Expense updatedexpense = new Expense(id, description, amount, date);
 
         List<Expense> expense = expenseStorage.list();
 

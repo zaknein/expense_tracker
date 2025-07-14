@@ -1,7 +1,7 @@
 package com.zaknein.expenseTracker;
 
 import java.io.IOException;
-omport java.time.LocalDateTime;
+import java.time.LocalDateTime;
 
 
 import com.beust.jcommander.JCommander;
@@ -20,6 +20,7 @@ public class App {
 
 
     public static void main(String[] args) throws IOException {
+
 
         // storage
         ExpenseStorage expenseStorage = new ExpenseStorage();
@@ -55,7 +56,7 @@ public class App {
 
         switch (parsedCommand) {
 
-            case "add" -> saveNewExpense.save( addExpense.getDescription(), addExpense.getAmount()LocalDateTime.now());
+            case "add" -> saveNewExpense.save( addExpense.getDescription(), addExpense.getAmount());
             case "list" -> listExpenseLogic.show();
             case "delete" -> deleteExpenseLogic.remove(deleteExpense.getId());
             case "update" -> updateExpenseLogic.update(updateExpense.getId(), updateExpense.getDescription(), updateExpense.getAmount());

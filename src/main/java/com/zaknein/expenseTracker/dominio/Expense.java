@@ -1,11 +1,5 @@
 package com.zaknein.expenseTracker.dominio;
-
-
-//public record Expense(int id, String description, double amount) {
-//
-//
-//}
-
+import java.time.LocalDateTime;
 
 public class Expense {
     int id;
@@ -20,7 +14,7 @@ public class Expense {
         this.id = id;
         this.description = description;
         this.amount = amount;
-        this.LocalDateTime = date;
+        this.date = date;
     }
 
     public int getId() {
@@ -47,11 +41,11 @@ public class Expense {
         this.amount = amount;
     }
 
-    public void setLocalDateTime(LocalDateTime date){
-        this.LocalDateTime = date;
+    public void setDate(LocalDateTime date){
+        this.date = date;
     }
 
-    public LocalDateTime getLocalDateTime(){
+    public LocalDateTime getDate(){
         return date;
     }
 }
