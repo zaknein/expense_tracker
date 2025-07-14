@@ -55,7 +55,7 @@ public class App {
 
         switch (parsedCommand) {
 
-            case "add" -> saveNewExpense.save( addExpense.getDescription(), addExpense.getAmount());
+            case "add" -> saveNewExpense.save( addExpense.getDescription(), addExpense.getAmount()LocalDateTime.now());
             case "list" -> listExpenseLogic.show();
             case "delete" -> deleteExpenseLogic.remove(deleteExpense.getId());
             case "update" -> updateExpenseLogic.update(updateExpense.getId(), updateExpense.getDescription(), updateExpense.getAmount());

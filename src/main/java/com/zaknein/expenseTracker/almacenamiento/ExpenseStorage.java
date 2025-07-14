@@ -1,6 +1,7 @@
 package com.zaknein.expenseTracker.almacenamiento;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.zaknein.expenseTracker.dominio.Expense;
 
 import java.io.File;
@@ -13,7 +14,7 @@ import java.util.HashMap;
 public class ExpenseStorage {
     private static final File expenseFile = new File("expense.json");
 
-    private static final ObjectMapper mapper = new ObjectMapper();
+    private static final ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
 
     // private final List<Expense> expenses;
