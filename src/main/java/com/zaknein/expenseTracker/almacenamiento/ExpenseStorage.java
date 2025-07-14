@@ -36,7 +36,8 @@ public class ExpenseStorage {
 
     public List<Expense> list() {
 
-        return expenses;
+        
+        return new ArrayList(expenses.value());
     }
 
 
@@ -47,7 +48,6 @@ public class ExpenseStorage {
     }
 
     public void update(int id, Expense expense){
-        // expenses.set(id, expense);
         expenses.replace(expense.getId(), expense);
         save();
     }
