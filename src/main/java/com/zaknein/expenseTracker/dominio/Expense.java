@@ -11,14 +11,16 @@ public class Expense {
     int id;
     String description;
     double amount;
+    LocalDateTime date;
 
     public Expense() {
     }
 
-    public Expense(int id, String description, double amount) {
+    public Expense(int id, String description, double amount, LocalDateTime date) {
         this.id = id;
         this.description = description;
         this.amount = amount;
+        this.LocalDateTime = date;
     }
 
     public int getId() {
@@ -43,5 +45,13 @@ public class Expense {
 
     public void setAmount(double amount) {
         this.amount = amount;
+    }
+
+    public void setLocalDateTime(LocalDateTime date){
+        this.LocalDateTime = date;
+    }
+
+    public LocalDateTime getLocalDateTime(){
+        return date;
     }
 }
