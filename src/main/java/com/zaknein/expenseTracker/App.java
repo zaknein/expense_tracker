@@ -64,7 +64,7 @@ public class App {
             case "list" -> listExpenseLogic.show();
             case "delete" -> deleteExpenseLogic.remove(deleteExpense.getId());
             case "update" -> updateExpenseLogic.update(updateExpense.getId(), updateExpense.getDescription(), updateExpense.getAmount());
-            case "summary" -> summaryLogic.summary();
+            case "summary" -> summaryLogic.summary(summary.getMonth());
 
         }
 
