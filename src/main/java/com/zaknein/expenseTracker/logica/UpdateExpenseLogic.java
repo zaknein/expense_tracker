@@ -15,19 +15,21 @@ public class UpdateExpenseLogic {
     }
 
 
-    public void update(int id, String description, Double amount, LocalDateTime date) {
+    public void update(int id, String description, Double amount) {
+
+        LocalDateTime date = LocalDateTime.now();
         Expense updatedexpense = new Expense(id, description, amount, date);
 
-        List<Expense> expense = expenseStorage.list();
+        // List<Expense> expense = expenseStorage.list();
 
-        for(int i=0; i < expense.size(); i++){
-            if(expense.get(i).getId() == id){
-                expenseStorage.update(i, updatedexpense);
-            }
-        }
+        // for(int i=0; i < expense.size(); i++){
+        //     if(expense.get(i).getId() == id){
+        //         expenseStorage.update(i, updatedexpense);
+        //     }
+        // }
 
 
-        //expenseStorage.update(id, expense);
+        expenseStorage.update(id, updatedexpense);
     }
 
 }
