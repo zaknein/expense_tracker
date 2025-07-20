@@ -54,6 +54,10 @@ public class ExpenseStorage {
         save();
     }
 
+    public void summary(Integer month){
+
+    }
+
     public void save() {
 
         try {

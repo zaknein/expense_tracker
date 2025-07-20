@@ -11,10 +11,18 @@ public class SummaryLogic{
         this.expenseStorage = expenseStorage;
     }
 
-    public void summary(int month){
+    public void summary(Integer month){
 
         if(month == null){
-            
+            System.out.println("Next will show all the expenses");
+            expenseStorage.summary(month);
+        }else{
+            String months = "";
+            switch (month) {
+                case 1 -> months = "January";
+            }
+            System.out.println("Show all " + months + " expenses");
+            expenseStorage.summary(month);
         }
 
     }

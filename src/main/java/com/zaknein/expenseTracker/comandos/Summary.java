@@ -1,6 +1,7 @@
 package com.zaknein.expenseTracker.comandos;
 
 import com.beust.jcommander.Parameters;
+import com.beust.jcommander.Parameter;
 
 @Parameters(
     commandNames = "summary",
@@ -10,8 +11,8 @@ import com.beust.jcommander.Parameters;
 public class Summary{
 
     @Parameter(
-        name = "--month",
-        description = "Month you whant to show the summary"
+        names = "--month",
+        description = "Month you want to show the summary"
     )
     
     private int month;
