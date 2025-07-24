@@ -57,7 +57,7 @@ public class SummaryLogic{
                     months = 12;
                     break
             }
-            System.out.println("Show all " + months + " expenses");
+            System.out.println("Show all " + month + " expenses");
             expenseStorage.summary(months);
         }
 
