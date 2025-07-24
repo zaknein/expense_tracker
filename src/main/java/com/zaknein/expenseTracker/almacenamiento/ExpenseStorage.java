@@ -61,6 +61,8 @@ public class ExpenseStorage {
                 totalSum += i.getAmount();
                 System.out.println(i);
                 System.out.println("Total summary: " + totalSum);
+            }else{
+                
             }
         }
     }
