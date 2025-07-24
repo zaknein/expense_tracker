@@ -55,7 +55,14 @@ public class ExpenseStorage {
     }
 
     public void summary(Integer month){
-
+        double totalSum = 0;
+        if(month == null){
+            for(String i :expenses.values()){
+                totalSum += i.getAmount();
+                System.out.println(i);
+                System.out.println("Total summary: " + totalSum);
+            }
+        }
     }
 
     public void save() {
