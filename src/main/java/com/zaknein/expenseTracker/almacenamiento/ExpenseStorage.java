@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.HashMap;
-
+import java.time.Month;
 
 public class ExpenseStorage {
     private static final File expenseFile = new File("expense.json");
@@ -62,7 +62,15 @@ public class ExpenseStorage {
                 System.out.println(i);
                 System.out.println("Total summary: " + totalSum);
             }else{
-                
+                for(String i :expenses.values()){
+                    if(month == expenses.getDate().getMonthValue()){
+                        totalSum += i.getAmount();
+                        System.out.println(i);
+                        System.out.println("Total summary: " + totalSum);
+                    }else{
+                        System.ouy.println("There´s no expense in that mounth");
+                    }
+
             }
         }
     }
