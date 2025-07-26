@@ -54,28 +54,12 @@ public class ExpenseStorage {
         save();
     }
 
-    public void summary(Integer month){
-        double totalSum = 0;
-        if(month == null){
-            for(String i :expenses.values()){
-                totalSum += i.getAmount();
-                System.out.println(i);
-                System.out.println("Total summary: " + totalSum);
-            }else{
-                for(String i :expenses.values()){
-                    if(month == expenses.getDate().getMonthValue()){
-                        totalSum += i.getAmount();
-                        System.out.println(i);
-                        System.out.println("Total summary: " + totalSum);
-                    }else{
-                        System.ouy.println("There´s no expense in that mounth");
-                    }
+    public List<Expense>  summary(){
 
-            }
-        }
+        return new ArrayList(expenses.values());
     }
 
-    public void save() {
+    public void save(){
 
         try {
            // expenseFile.createNewFile();

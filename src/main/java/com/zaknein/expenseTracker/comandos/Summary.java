@@ -15,9 +15,9 @@ public class Summary{
         description = "Month you want to show the summary"
     )
     
-    private int month;
+    private String month;
 
-    public int getMonth(){
+    public String getMonth(){
         return month;
     }
 
