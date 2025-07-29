@@ -45,7 +45,7 @@ public class Expense {
         this.date = date;
     }
 
-    public static LocalDateTime getDate(){
+    public  LocalDateTime getDate(){
         return date;
     }
 }
