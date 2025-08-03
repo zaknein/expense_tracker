@@ -7,20 +7,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class SummaryLogic{
+public class SummaryLogic {
     private final ExpenseStorage expenseStorage;
 
     public SummaryLogic(ExpenseStorage expenseStorage) {
         this.expenseStorage = expenseStorage;
     }
 
-    public void summary(String month){
-        List<Expense> expensesValue = expenseStorage.summary();
+    public void summary(String month) {
+        List<Expense> expensesValue = expenseStorage.list();
         double totalSum = 0;
         int months = 0;
         boolean enteredMonth = true;
-        if(month != null){
-             month = month.toLowerCase();
+        if (month != null) {
+            month = month.toLowerCase();
             switch (month) {
                 case "january":
                     months = 1;
@@ -58,12 +58,12 @@ public class SummaryLogic{
                 case "december":
                     months = 12;
                     break;
+
             }
         }
 
-
-        for(Expense i: expensesValue){
-            if(month != null && months == i.getDate().getMonthValue()){
+        for (Expense i : expensesValue) {
+            if (month != null && months == i.getDate().getMonthValue()) {
                 totalSum += i.getAmount();
                 System.out.println("Show all " + month + " expenses");
                 System.out.printf("• [%d] %s - $%.2f - %s\n",
@@ -74,7 +74,7 @@ public class SummaryLogic{
                 );
             } else if (month != null && months != i.getDate().getMonthValue()) {
                 enteredMonth = false;
-            }else{
+            } else {
                 totalSum += i.getAmount();
                 System.out.printf("• [%d] %s - $%.2f - %s\n",
                         i.getId(),
@@ -82,11 +82,11 @@ public class SummaryLogic{
                         i.getAmount(),
                         i.getDate()
                 );
-                }
             }
-        if(enteredMonth == false){
+        }
+        if (enteredMonth == false) {
             System.out.println("No expenses found in " + month);
-        }else {
+        } else {
             System.out.println("Total summary: " + totalSum);
         }
     }

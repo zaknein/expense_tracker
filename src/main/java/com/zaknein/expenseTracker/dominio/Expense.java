@@ -17,6 +17,14 @@ public class Expense {
         this.date = date;
     }
 
+    public Expense(int id, Expense other) {
+        this.id = id;
+        this.description = other.description;
+        this.amount = other.amount;
+        this.date = other.date;
+    }
+
+
     public int getId() {
         return id;
     }

@@ -15,9 +15,6 @@ public class ExpenseStorage {
 
     private static final ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
-
-    // private final List<Expense> expenses;
-
     private HashMap<Integer,Expense> expenses = new HashMap<>();
 
     public ExpenseStorage() throws IOException {
@@ -29,47 +26,33 @@ public class ExpenseStorage {
     }
 
     public void add(Expense expense) {
-        // expenses.add(expense);
         expenses.put(expense.getId(), expense);
         save();
     }
 
     public List<Expense> list() {
-
-
-
         return new ArrayList(expenses.values());
     }
 
-
     public void delete(int id) {
-        // expenses.removeIf((expense) -> expense.getId() == id);
         expenses.remove(id);
         save();
     }
-
+    public Expense get(int id){
+        return expenses.get(id);
+    }
     public void update(int id, Expense expense){
-        expenses.replace(expense.getId(), expense);
+        expenses.replace(id, expense);
         save();
     }
 
-    public List<Expense>  summary(){
-
-        return new ArrayList(expenses.values());
-    }
-
     public void save(){
-
         try {
-           // expenseFile.createNewFile();
             mapper.writeValue(expenseFile, expenses);
-
         } catch (IOException e) {
             System.out.println("No existe archivo");
             e.printStackTrace();
         }
-
     }
-
 
 }
