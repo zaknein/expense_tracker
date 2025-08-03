@@ -17,63 +17,70 @@ public class SummaryLogic {
     public void summary(String month) {
         List<Expense> expensesValue = expenseStorage.list();
         double totalSum = 0;
-        int months = 0;
-        boolean enteredMonth = true;
+        int monthValue = 0;
+        boolean theMonthHaveExpense = true;
+        boolean haveExpenseToSum = false;
         if (month != null) {
             month = month.toLowerCase();
             switch (month) {
                 case "january":
-                    months = 1;
+                    monthValue = 1;
                     break;
                 case "february":
-                    months = 2;
+                    monthValue = 2;
                     break;
                 case "march":
-                    months = 3;
+                    monthValue = 3;
                     break;
                 case "april":
-                    months = 4;
+                    monthValue = 4;
                     break;
                 case "may":
-                    months = 5;
+                    monthValue = 5;
                     break;
                 case "june":
-                    months = 6;
+                    monthValue = 6;
                     break;
                 case "july":
-                    months = 7;
+                    monthValue = 7;
                     break;
                 case "august":
-                    months = 8;
+                    monthValue = 8;
                     break;
                 case "september":
-                    months = 9;
+                    monthValue = 9;
                     break;
                 case "october":
-                    months = 10;
+                    monthValue = 10;
                     break;
                 case "november":
-                    months = 11;
+                    monthValue = 11;
                     break;
                 case "december":
-                    months = 12;
+                    monthValue = 12;
                     break;
 
             }
         }
-
+        if (month != null) {
+            System.out.println("Show all " + month + " expenses");
+        }else {
+            System.out.println("Show all expenses");
+        }
         for (Expense i : expensesValue) {
-            if (month != null && months == i.getDate().getMonthValue()) {
+            if (month != null && monthValue == i.getDate().getMonthValue()) {
                 totalSum += i.getAmount();
-                System.out.println("Show all " + month + " expenses");
                 System.out.printf("• [%d] %s - $%.2f - %s\n",
                         i.getId(),
                         i.getDescription(),
                         i.getAmount(),
                         i.getDate()
                 );
-            } else if (month != null && months != i.getDate().getMonthValue()) {
-                enteredMonth = false;
+                haveExpenseToSum = true;
+                theMonthHaveExpense = true;
+
+            } else if (month != null && monthValue != i.getDate().getMonthValue()) {
+                theMonthHaveExpense = false;
             } else {
                 totalSum += i.getAmount();
                 System.out.printf("• [%d] %s - $%.2f - %s\n",
@@ -82,12 +89,15 @@ public class SummaryLogic {
                         i.getAmount(),
                         i.getDate()
                 );
+                haveExpenseToSum = true;
+                theMonthHaveExpense = true;
             }
         }
-        if (enteredMonth == false) {
+        if (theMonthHaveExpense == false) {
             System.out.println("No expenses found in " + month);
-        } else {
-            System.out.println("Total summary: " + totalSum);
+        }
+        if (haveExpenseToSum == true){
+            System.out.println("Total sum: " + totalSum);
         }
     }
 }
