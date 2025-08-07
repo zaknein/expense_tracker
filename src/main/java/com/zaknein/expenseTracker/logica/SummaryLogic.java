@@ -16,10 +16,13 @@ public class SummaryLogic {
 
     public void summary(String month) {
         List<Expense> expensesValue = expenseStorage.list();
+
         double totalSum = 0;
+
         int monthValue = 0;
-        boolean theMonthHaveExpense = true;
+
         boolean haveExpenseToSum = false;
+
         if (month != null) {
             month = month.toLowerCase();
             switch (month) {
@@ -68,7 +71,7 @@ public class SummaryLogic {
             System.out.println("Show all expenses");
         }
         for (Expense i : expensesValue) {
-            if (month != null && monthValue == i.getDate().getMonthValue()) {
+            if(month == null || monthValue == i.getDate().getMonthValue()){
                 totalSum += i.getAmount();
                 System.out.printf("• [%d] %s - $%.2f - %s\n",
                         i.getId(),
@@ -77,27 +80,36 @@ public class SummaryLogic {
                         i.getDate()
                 );
                 haveExpenseToSum = true;
-                theMonthHaveExpense = true;
-
-            } else if (month != null && monthValue != i.getDate().getMonthValue()) {
-                theMonthHaveExpense = false;
-            } else {
-                totalSum += i.getAmount();
-                System.out.printf("• [%d] %s - $%.2f - %s\n",
-                        i.getId(),
-                        i.getDescription(),
-                        i.getAmount(),
-                        i.getDate()
-                );
-                haveExpenseToSum = true;
-                theMonthHaveExpense = true;
             }
+//            if (month != null && monthValue == i.getDate().getMonthValue()) {
+//                totalSum += i.getAmount();
+//                System.out.printf("• [%d] %s - $%.2f - %s\n",
+//                        i.getId(),
+//                        i.getDescription(),
+//                        i.getAmount(),
+//                        i.getDate()
+//                );
+//                haveExpenseToSum = true;
+//                theMonthHaveExpense = true;
+//
+//            } else if (month != null && monthValue != i.getDate().getMonthValue()) {
+//                theMonthHaveExpense = false;
+//            } else {
+//                totalSum += i.getAmount();
+//                System.out.printf("• [%d] %s - $%.2f - %s\n",
+//                        i.getId(),
+//                        i.getDescription(),
+//                        i.getAmount(),
+//                        i.getDate()
+//                );
+//                haveExpenseToSum = true;
+//                theMonthHaveExpense = true;
+//            }
         }
-        if (theMonthHaveExpense == false) {
-            System.out.println("No expenses found in " + month);
-        }
-        if (haveExpenseToSum == true){
-            System.out.println("Total sum: " + totalSum);
-        }
+        if (monthValue == 0 && !haveExpenseToSum) {
+            System.out.println("No expenses found");
+        }else if(month != null && !haveExpenseToSum){System.out.println("No expenses found in " + month);}
+        else{System.out.println("Total sum: " + totalSum);}
+
     }
 }
